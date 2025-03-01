@@ -1,0 +1,51 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.11kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/debian:bullseye-slim
+#2 DONE 1.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/debian:bullseye-slim@sha256:33b7c2e071c29e618182ec872c471f39d2dde3d8904d95f5b7a61acf3a592e7b
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 1.54kB 0.0s done
+#5 DONE 0.0s
+
+#6 [6/9] WORKDIR /app
+#6 CACHED
+
+#7 [7/9] COPY code/ /app/code/
+#7 CACHED
+
+#8 [4/9] RUN conda create -n env python=3.11 -y &&     conda install -n env -c conda-forge         pyspark=3.5.0         pytorch=2.1.2         numpy=1.26.4         pandas=2.2.1         scipy=1.13.0         scikit-learn=1.4.2         polars=0.20.3         pyarrow=15.0.2         python-duckdb=0.10.1         s3fs=2024.2.0         spacy=3.7.4         gensim=4.3.2         numba=0.59.0         sqlalchemy=2.0.29         pytest=8.1.1         openjdk=11.0.21         -y &&     conda clean -afy
+#8 CACHED
+
+#9 [5/9] RUN /opt/conda/envs/env/bin/pip install --no-cache-dir     orjson==3.10.3     awswrangler==3.7.0     transformers==4.40.1     accelerate==0.29.3     neo4j==5.20.0     umap-learn==0.5.6     smart-open==7.1.0     onnxruntime==1.17.1     segeval==2.0.9     datasets==2.19.1     pyyaml==6.0.1
+#9 CACHED
+
+#10 [2/9] RUN apt-get update --fix-missing &&     apt-get install -y --no-install-recommends         wget         bzip2         ca-certificates         curl         git         vim         procps         openjdk-11-jdk         build-essential         fonts-dejavu         unzip         &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+#10 CACHED
+
+#11 [3/9] RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py311_23.11.0-2-Linux-x86_64.sh -O ~/miniconda.sh &&     /bin/bash ~/miniconda.sh -b -p /opt/conda &&     rm ~/miniconda.sh &&     conda clean -afy
+#11 CACHED
+
+#12 [8/9] COPY script/ /app/script/
+#12 CACHED
+
+#13 [9/9] RUN mkdir -p /app/ztmp/data /app/logs
+#13 CACHED
+
+#14 exporting to image
+#14 exporting layers done
+#14 writing image sha256:35a31538db8e5fc4a58954de8f47f09b1a6cc4ae233bfdad8fcc95a553ef1d07 done
+#14 naming to docker.io/library/agnews-processor:latest done
+#14 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/wh3z368id0s2jxhga2mz5uh9h

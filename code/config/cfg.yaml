@@ -1,0 +1,16 @@
+# This is the content for /Users/dilshanperera/Desktop/Uzerbase/code/config/cfg.yaml
+dataset:
+  news:
+    name: "ag_news"
+    source: "sh0416/ag_news"
+    description_column: "description"
+    target_words: ["president", "the", "Asia"]
+    
+spark:
+  app_name: "WordCountProcessor"
+  master: "local[*]"
+  
+output:
+  format: "parquet"
+  word_count_file_prefix: "word_count"
+  word_count_all_file_prefix: "word_count_all"

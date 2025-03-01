@@ -1,0 +1,23 @@
+2025-03-01 10:20:26,258 - pipeline_process_data - INFO - Starting command: process_data
+2025-03-01 10:20:36,040 - pipeline_process_data - ERROR - Error executing command process_data: No module named 'distutils'
+Traceback (most recent call last):
+  File "/Users/dilshanperera/Desktop/Uzerbase/code/src/run.py", line 56, in main
+    dataset = processor.load_dataset(args["dataset"])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dilshanperera/Desktop/Uzerbase/code/src/data_processor.py", line 79, in load_dataset
+    spark_df = self.spark.createDataFrame(pandas_df)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dilshanperera/Desktop/Uzerbase/venv/lib/python3.12/site-packages/pyspark/sql/session.py", line 1440, in createDataFrame
+    return super(SparkSession, self).createDataFrame(  # type: ignore[call-overload]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dilshanperera/Desktop/Uzerbase/venv/lib/python3.12/site-packages/pyspark/sql/pandas/conversion.py", line 330, in createDataFrame
+    require_minimum_pandas_version()
+  File "/Users/dilshanperera/Desktop/Uzerbase/venv/lib/python3.12/site-packages/pyspark/sql/pandas/utils.py", line 24, in require_minimum_pandas_version
+    from distutils.version import LooseVersion
+ModuleNotFoundError: No module named 'distutils'
+2025-03-01 10:27:47,706 - pipeline_process_data - INFO - Starting command: process_data
+2025-03-01 10:28:05,722 - pipeline_process_data - INFO - Process completed successfully. Output saved to /Users/dilshanperera/Desktop/Uzerbase/ztmp/data/word_count_20250301.parquet
+2025-03-01 10:28:05,849 - pipeline_process_data - INFO - Command process_data completed successfully
+2025-03-01 09:38:44,785 - pipeline_process_data - INFO - Starting command: process_data
+2025-03-01 09:39:15,403 - pipeline_process_data - INFO - Process completed successfully. Output saved to /app/ztmp/data/word_count_20250301.parquet
+2025-03-01 09:39:16,328 - pipeline_process_data - INFO - Command process_data completed successfully

@@ -1,0 +1,6 @@
+2025-03-01 10:29:01,370 - pipeline_process_data_all - INFO - Starting command: process_data_all
+2025-03-01 10:29:18,409 - pipeline_process_data_all - INFO - Process completed successfully. Output saved to /Users/dilshanperera/Desktop/Uzerbase/ztmp/data/word_count_all_20250301.parquet
+2025-03-01 10:29:18,614 - pipeline_process_data_all - INFO - Command process_data_all completed successfully
+2025-03-01 09:40:37,885 - pipeline_process_data_all - INFO - Starting command: process_data_all
+2025-03-01 09:41:06,046 - pipeline_process_data_all - INFO - Process completed successfully. Output saved to /app/ztmp/data/word_count_all_20250301.parquet
+2025-03-01 09:41:07,058 - pipeline_process_data_all - INFO - Command process_data_all completed successfully
