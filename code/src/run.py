@@ -3,8 +3,8 @@ import os
 import sys
 import argparse
 import logging
-import subprocess
 from typing import Dict, Any, List
+
 from data_processor import DataProcessor
 from utils import load_config, setup_logger
 
@@ -32,42 +32,12 @@ def parse_args() -> Dict[str, Any]:
     process_data_all.add_argument("-dataset", type=str, required=True, help="Dataset name")
     process_data_all.add_argument("-dirout", type=str, required=True, help="Output directory")
     
-    # Define the test command
-    test_parser = subparsers.add_parser("test", help="Run unit tests")
-    test_parser.add_argument("-p", "--path", type=str, default="/app/code/tests", help="Path to test directory")
-    
     return vars(parser.parse_args())
-
-def run_tests(test_path: str):
-    """
-    Run unit tests using pytest.
-    
-    Args:
-        test_path (str): Path to the test directory
-    """
-    try:
-        result = subprocess.run(
-            ["pytest", test_path], 
-            capture_output=True, 
-            text=True, 
-            check=True
-        )
-        print(result.stdout)
-    except subprocess.CalledProcessError as e:
-        print("Tests failed:")
-        print(e.stdout)
-        print(e.stderr)
-        sys.exit(1)
 
 def main():
     """Main entry point for the application."""
     # Parse command line arguments
     args = parse_args()
-    
-    # If running tests
-    if args["command"] == "test":
-        run_tests(args.get("path", "/app/code/tests"))
-        return
     
     # Set up logging
     os.makedirs(args.get("dirout", "output"), exist_ok=True)
