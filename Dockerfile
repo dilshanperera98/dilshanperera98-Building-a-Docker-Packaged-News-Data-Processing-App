@@ -1,5 +1,4 @@
 FROM debian:bullseye-slim
-
 # Set environment variables
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH="/opt/conda/bin:${PATH}"
@@ -77,7 +76,6 @@ ENV PYTHONPATH=/app \
 # Create directories
 RUN mkdir -p /app/ztmp/data /app/logs
 
-# Entrypoint
-ENTRYPOINT ["python", "/app/code/src/run.py"]
-
-CMD ["process_data"]
+# Shell as entrypoint to allow flexible command execution
+ENTRYPOINT ["/bin/bash", "-c"]
+CMD ["source /opt/conda/etc/profile.d/conda.sh && conda activate env && python /app/code/src/run.py process_data"]
