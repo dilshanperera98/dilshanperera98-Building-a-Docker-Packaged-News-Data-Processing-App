@@ -1,5 +1,4 @@
 name: AG News Processing Pipeline
-
 on:
   push:
     branches: [ main ]
@@ -29,8 +28,10 @@ jobs:
 
       - name: Run unit tests
         run: |
-         docker run --rm agnews-processor:latest python -m pytest /app/code/tests
-            
+          docker run --rm \
+            -v ./:/app \
+            agnews-processor:latest \
+            /opt/conda/envs/env/bin/pytest /app/code/tests
 
       - name: Process specific words
         run: |
