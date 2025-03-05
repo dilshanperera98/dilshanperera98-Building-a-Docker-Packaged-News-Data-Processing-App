@@ -29,8 +29,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          docker run --rm agnews-processor:latest \
-            python -m pytest /app/code/tests -v
+          docker run --rm agnews-processor:latest pytest /app/code/tests
 
       - name: Process specific words
         run: |
