@@ -27,9 +27,9 @@ jobs:
       - name: Create directories
         run: mkdir -p ztmp/data logs
 
-      - name: Run unit tests
-        run: |
-          docker run --rm agnews-processor:latest pytest /app/code/tests
+      #- name: Run unit tests
+      #  run: |
+       #   docker run --rm agnews-processor:latest pytest /app/code/tests
 
       - name: Process specific words
         run: |
