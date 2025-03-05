@@ -79,3 +79,5 @@ RUN mkdir -p /app/ztmp/data /app/logs
 
 # Entrypoint
 ENTRYPOINT ["python", "/app/code/src/run.py"]
+
+CMD ["process_data"]
