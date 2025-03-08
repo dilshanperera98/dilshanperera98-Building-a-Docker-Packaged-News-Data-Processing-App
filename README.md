@@ -43,3 +43,43 @@ To ensure portability and automation, the entire application was packaged into a
 A YAML-based configuration file was implemented to allow flexibility in input parameters, output directories, and dataset selection. A Bash script was also included for streamlined execution of the processing pipeline.
 
 Additionally, the project incorporated structured logging and pipeline logs, capturing key steps such as Docker builds, data processing, and dependency installations.
+
+Use those codes to run the project.
+source .venv/bin/activate
+
+deactivate
+
+docker build -t agnews-processor:latest .
+
+docker run --rm \
+  -v ./ztmp/data:/app/ztmp/data \
+  -v ./logs:/app/logs \
+  agnews-processor:latest \
+  process_data \
+  -cfg /app/code/config/cfg.yaml \
+  -dataset news \
+  -dirout "/app/ztmp/data/"
+
+
+docker run --rm \
+  -v ./ztmp/data:/app/ztmp/data \
+  -v ./logs:/app/logs \
+  agnews-processor:latest \
+  process_data_all \
+  -cfg /app/code/config/cfg.yaml \
+  -dataset news \
+  -dirout "/app/ztmp/data/"
+
+  ls ztmp/data
+
+  cat ztmp/data/logs/pipeline_process_data_20250305.log
+  cat ztmp/data/logs/pipeline_process_data_all_20250305.log
+
+
+
+  # Build the image (if not already built)
+docker build -t agnews-processor .
+
+# Run tests inside container
+docker run --rm agnews-processor:latest  \
+  python -m unittest /app/tests/test_data_processor.py -v
