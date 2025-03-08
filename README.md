@@ -77,9 +77,9 @@ docker run --rm \
 
 
 
-  # Build the image (if not already built)
+###Build the image (if not already built)
 docker build -t agnews-processor .
 
-# Run tests inside container
+ ###Run tests inside container
 docker run --rm agnews-processor:latest  \
   python -m unittest /app/tests/test_data_processor.py -v
