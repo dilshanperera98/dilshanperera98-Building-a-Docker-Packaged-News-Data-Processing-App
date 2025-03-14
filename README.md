@@ -1,85 +1,63 @@
-News Data Processing & Analysis in PySpark (Dockerized)
+# 📰 News Data Processing & Analysis in PySpark (Dockerized)  
 
-▪ Developed a Dockerized PySpark application to process the AG News dataset.
-▪ Extracted and counted word occurrences from the news descriptions.
-▪ Implemented two word frequency analyses:
-   Predefined words ("president", "the", "Asia").
-   All unique words in the dataset.
-▪ Stored results as Parquet files with timestamps.
-▪ Packaged the application in a Debian-based Docker image with Conda.
-▪ Automated the Docker build using GitHub Actions.
-▪ Included logging, type hints, basic tests, and structured code quality.
-▪ Provided bash scripts & YAML-based config files for easy execution.
+This project involves developing a **Dockerized PySpark-based application** to process and analyze public news data from the **AG News dataset**.  
+The application extracts and counts word occurrences in news descriptions and stores the results in **Parquet format**.  
 
-▪ Technologies Used
-  Big Data Processing: PySpark
-  Programming Language: Python (3.11)
-  Data Storage: Parquet, PyArrow
-  Containerization: Docker (Debian-based)
-  Package Management: Conda
-  Automation & CI/CD: GitHub Actions
-  Libraries & Frameworks: Pandas, NumPy, Scikit-learn, Transformers, PyTorch, DuckDB, AWS Wrangler
-  Logging & Testing: Python Logging, PyTest
-  Configuration Management: YAML
+---
 
+## 🚀 Key Features  
 
- 🪧 Project Description
-This project involved developing a Dockerized PySpark-based application to process and analyze public news data from the AG News dataset. The main objective was to extract and count word occurrences from the news description column and store the results in Parquet format.
+✅ **Predefined Word Count Analysis**: Counts occurrences of the words **"president", "the", and "Asia"**.  
+✅ **Full Word Count Analysis**: Counts occurrences of **all unique words** in the dataset.  
+✅ **PySpark-based Big Data Processing** for scalability.  
+✅ **Parquet Storage with Timestamps** for structured data output.  
+✅ **Dockerized** for portability and environment consistency.  
+✅ **GitHub Actions for CI/CD** automating the Docker build process.  
+✅ **Logging & Testing** for structured and maintainable code.  
+✅ **YAML-based Configuration** for flexible input parameters and output control.  
+✅ **Bash Scripts for Easy Execution**.  
 
-The application performed two main tasks:
+---
 
-Predefined Word Count Analysis:
+## 🛠️ Technologies Used  
 
-Counted occurrences of the words "president", "the", and "Asia" in the news descriptions.
-Saved results in Parquet format with a timestamped filename.
-Full Word Count Analysis:
+- **Big Data Processing**: PySpark  
+- **Programming Language**: Python (3.11)  
+- **Data Storage**: Parquet, PyArrow  
+- **Containerization**: Docker (Debian-based)  
+- **Package Management**: Conda  
+- **Automation & CI/CD**: GitHub Actions  
+- **Libraries & Frameworks**: Pandas, NumPy, Scikit-learn, Transformers, PyTorch, DuckDB, AWS Wrangler  
+- **Logging & Testing**: Python Logging, PyTest  
+- **Configuration Management**: YAML  
 
-Counted occurrences of all unique words in the dataset’s news descriptions.
-Stored the results in a separate Parquet file with a timestamped filename.
-The project was structured with modular and well-documented code, following software engineering best practices such as logging, type hints, and basic unit testing.
+---
 
-To ensure portability and automation, the entire application was packaged into a Docker container (Debian-based) using Conda for dependency management. The Docker image build was automated using GitHub Actions, ensuring a seamless deployment process.
+## 📌 Project Description  
 
-A YAML-based configuration file was implemented to allow flexibility in input parameters, output directories, and dataset selection. A Bash script was also included for streamlined execution of the processing pipeline.
+The application **processes and analyzes the AG News dataset** to extract meaningful insights.  
+It is structured with **modular code, logging, and testing**, following software engineering best practices.  
 
-Additionally, the project incorporated structured logging and pipeline logs, capturing key steps such as Docker builds, data processing, and dependency installations.
+### 🔹 Workflow Overview  
+1️⃣ **Predefined Word Count Analysis**:  
+   - Extracts occurrences of `"president"`, `"the"`, and `"Asia"` from news descriptions.  
+   - Saves the results in **Parquet format** with a timestamped filename.  
 
-Use those codes to run the project.
+2️⃣ **Full Word Count Analysis**:  
+   - Counts occurrences of **all unique words** in the dataset.  
+   - Stores results in a separate **Parquet file with timestamps**.  
+
+3️⃣ **Dockerized Processing Pipeline**:  
+   - Uses a **Debian-based Docker image with Conda** for dependency management.  
+   - Automates Docker image builds using **GitHub Actions**.  
+   - Uses a **YAML-based configuration file** for input flexibility.  
+   - Includes **structured logging** for debugging and monitoring.  
+   - Provides a **Bash script for seamless execution**.  
+
+---
+
+## 🏗️ Setup & Execution  
+
+### 🔹 1. Activate Virtual Environment (Optional)  
+```bash
 source .venv/bin/activate
-
-deactivate
-
-docker build -t agnews-processor:latest .
-
-docker run --rm \
-  -v ./ztmp/data:/app/ztmp/data \
-  -v ./logs:/app/logs \
-  agnews-processor:latest \
-  process_data \
-  -cfg /app/code/config/cfg.yaml \
-  -dataset news \
-  -dirout "/app/ztmp/data/"
-
-
-docker run --rm \
-  -v ./ztmp/data:/app/ztmp/data \
-  -v ./logs:/app/logs \
-  agnews-processor:latest \
-  process_data_all \
-  -cfg /app/code/config/cfg.yaml \
-  -dataset news \
-  -dirout "/app/ztmp/data/"
-
-  ls ztmp/data
-
-  cat ztmp/data/logs/pipeline_process_data_20250305.log
-  cat ztmp/data/logs/pipeline_process_data_all_20250305.log
-
-
-
-###Build the image (if not already built)
-docker build -t agnews-processor .
-
- ###Run tests inside container
-docker run --rm agnews-processor:latest  \
-  python -m unittest /app/tests/test_data_processor.py -v
